@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ae6cfde2-a580-4b8c-b41b-8dbeea86e2d2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/AccountingLedger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/AccountingLedger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transactions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/transactions.csv" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "tanzima1215-tech"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/YearUpUnited-LTCA-Fall-26-Go7-Tanzim/accounting-ledger.git",
+    "accountId": "42e09623-7b78-4a95-9a2a-afc1c6d08a92"
+  }
+}]]></component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.8625967602318538E-93" />
+      <entry key="S2" value="6.809141430015644E-24" />
+      <entry key="S5" value="6.851288043290675E-10" />
+      <entry key="S10" value="4.0122561806352924E-5" />
+      <entry key="S30" value="0.10995719260601122" />
+      <entry key="S60" value="1.0283027735010037" />
+      <entry key="M2" value="3.428668707262276" />
+      <entry key="M5" value="8.010415484886991" />
+      <entry key="M10" value="11.474222991567178" />
+      <entry key="M15" value="13.16452830274035" />
+      <entry key="M30" value="15.28489918530798" />
+      <entry key="H1" value="16.555179497817356" />
+      <entry key="H2" value="17.253869028529984" />
+      <entry key="H4" value="17.620745562532612" />
+      <entry key="D1" value="17.93590833499294" />
+      <entry key="W1" value="17.990822125863417" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.0000000008749987" />
+      <entry key="MS500" value="1.015454327423834" />
+      <entry key="S2" value="1.4217523585113954" />
+      <entry key="S5" value="2.002721443042509" />
+      <entry key="S10" value="2.3981992817713254" />
+      <entry key="S30" value="2.916203719167429" />
+      <entry key="S60" value="3.924405063511198" />
+      <entry key="M2" value="6.088053943805418" />
+      <entry key="M5" value="10.676213435202259" />
+      <entry key="M10" value="15.039473318750316" />
+      <entry key="M15" value="17.433566462624814" />
+      <entry key="M30" value="20.636520728444978" />
+      <entry key="H1" value="22.64541368590208" />
+      <entry key="H2" value="23.77539201999311" />
+      <entry key="H4" value="24.375308642088566" />
+      <entry key="D1" value="24.89411458446625" />
+      <entry key="W1" value="24.984829495988716" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="6.180452118999829E-4" />
+      <entry key="MS500" value="0.2289868353084571" />
+      <entry key="S2" value="0.8731045094682272" />
+      <entry key="S5" value="1.5228912648784003" />
+      <entry key="S10" value="2.0401191171725377" />
+      <entry key="S30" value="2.8508944110604877" />
+      <entry key="S60" value="4.816891990609773" />
+      <entry key="M2" value="9.400101688111137" />
+      <entry key="M5" value="18.603541621666327" />
+      <entry key="M10" value="26.45625008697296" />
+      <entry key="M15" value="30.55412320788636" />
+      <entry key="M30" value="35.89567879988293" />
+      <entry key="H1" value="39.186552818555924" />
+      <entry key="H2" value="41.02191285993368" />
+      <entry key="H4" value="41.99229316473013" />
+      <entry key="D1" value="42.8293835584927" />
+      <entry key="W1" value="42.9755599719488" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3LZ1S8Wiu4GE56WtGpOhUhQFmNd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AccountingLedger.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ae6cfde2-a580-4b8c-b41b-8dbeea86e2d2" name="Changes" comment="" />
+      <created>1793646774631</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1793646774631</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

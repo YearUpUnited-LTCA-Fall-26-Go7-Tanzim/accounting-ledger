@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,12 +16,21 @@ public class AccountingLedger {
     }
 
     public static void readCSV() {
+
+        ArrayList<Transaction> transactions = new ArrayList<>();
+
+
         String fileName = "transactions.csv";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
+                String[] parts = line.split("\\|");
+                double amount = Double.parseDouble(parts[4]);
+                Transaction transaction = new Transaction(parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
+                transactions.add(transaction);
+                
             }
         } catch (IOException e) {
             System.err.println("An error occurred while reading the file.");
