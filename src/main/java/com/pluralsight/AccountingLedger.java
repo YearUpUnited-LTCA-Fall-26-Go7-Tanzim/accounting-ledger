@@ -76,7 +76,7 @@ public class AccountingLedger {
     public static void makeADeposit() {
         Scanner scanner = new Scanner(System.in);
 
-            System.out.println("\n===Make a deposit===");
+        System.out.println("\n===Make a deposit===");
         System.out.print("Date YYYY-MM-DD: ");
         String date = scanner.nextLine().trim();
         System.out.print("Time HH:MM:SS: ");
@@ -96,12 +96,29 @@ public class AccountingLedger {
         }
         //write new transaction to the csv
         // make a payment similar to the deposit
-        // ledger screen 
+        // ledger screen
     }
 
     public static void makeAPayment() {
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Make a payment");
+        System.out.println("===Make a payment===");
+
+        System.out.print("Date YYYY-MM-DD: ");
+        String date = scanner.nextLine().trim();
+        System.out.print("Time HH:MM:SS: ");
+        String time = scanner.nextLine().trim();
+        System.out.print("Description: ");
+        String description = scanner.nextLine();
+        System.out.print("Vendor: ");
+        String vendor = scanner.nextLine();
+        System.out.print("Amount: ");
+        double amount = Double.parseDouble(scanner.nextLine().trim());
+        amount = -Math.abs(amount);
+
+
+        Transaction payment = new Transaction(date, time, description, vendor, amount);
+        transactions.add(payment);
 
     }
 
