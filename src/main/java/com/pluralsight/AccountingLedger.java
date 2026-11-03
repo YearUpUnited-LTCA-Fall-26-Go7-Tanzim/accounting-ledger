@@ -5,6 +5,8 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 
 
 public class AccountingLedger {
@@ -91,9 +93,8 @@ public class AccountingLedger {
 
         Transaction deposit = new Transaction(date, time, description, vendor, amount);
         transactions.add(deposit);
-        for (Transaction t : transactions ) {
-            System.out.println(t.getAmount());
-        }
+        saveTransaction(deposit);
+
         //write new transaction to the csv
         // make a payment similar to the deposit
         // ledger screen
@@ -102,9 +103,9 @@ public class AccountingLedger {
     public static void makeAPayment() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("===Make a payment===");
+        System.out.println("\n===Make a payment===");
 
-        System.out.print("Date YYYY-MM-DD: ");
+        System.out.print("\nDate YYYY-MM-DD: ");
         String date = scanner.nextLine().trim();
         System.out.print("Time HH:MM:SS: ");
         String time = scanner.nextLine().trim();
@@ -119,6 +120,11 @@ public class AccountingLedger {
 
         Transaction payment = new Transaction(date, time, description, vendor, amount);
         transactions.add(payment);
+        saveTransaction(payment);
+
+        for (Transaction t : transactions ) {
+            System.out.println(t.getAmount());
+        }
 
     }
 
@@ -158,6 +164,20 @@ public class AccountingLedger {
 
         System.out.println("You have exited");
 
+    }
+
+    public static void saveTransaction(Transaction transaction) {
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.csv", true))) {
+
+            writer.write(transaction.getDate() + "|" + transaction.getTime() + "|" + transaction.getDescription() + "|" + transaction.getVendor() + "|" + transaction.getAmount());
+            writer.newLine();
+
+
+        } catch (IOException e) {
+            System.err.println("Error saving transaction.");
+            e.printStackTrace();
+        }
     }
 
 
