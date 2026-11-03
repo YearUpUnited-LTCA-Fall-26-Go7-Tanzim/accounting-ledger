@@ -6,16 +6,20 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+
 public class AccountingLedger {
+
+    private static ArrayList<Transaction> transactions;
+
     public static void main(String[] args) {
         System.out.println(new java.io.File(".").getAbsolutePath());
-        readCSV();
+        transactions = readCSV();
         homeScreen();
 
 
     }
 
-    public static void readCSV() {
+    public static ArrayList<Transaction> readCSV() {
 
         ArrayList<Transaction> transactions = new ArrayList<>();
 
@@ -25,26 +29,29 @@ public class AccountingLedger {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+              //  System.out.println(line);
                 String[] parts = line.split("\\|");
                 double amount = Double.parseDouble(parts[4]);
                 Transaction transaction = new Transaction(parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
                 transactions.add(transaction);
-                
+
             }
         } catch (IOException e) {
             System.err.println("An error occurred while reading the file.");
             e.printStackTrace();
         }
+
+        return transactions;
     }
 
     public static void homeScreen() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("===== Account Home =====");
+        System.out.println("\n===== Account Home =====");
         System.out.println("\nAdd Deposit (D)");
         System.out.println("Make payment (P)");
         System.out.println("Ledger (L)");
         System.out.println("Exit(X)");
+        System.out.print("Enter your choice: ");
         String input = scanner.nextLine().trim();
 
         if (input.equalsIgnoreCase("D")) {
@@ -78,8 +85,34 @@ public class AccountingLedger {
     }
 
     public static void yourLedger() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\n===This is your ledger===");
+        System.out.println("\nAll entries (A)");
+        System.out.println("Deposits (D)");
+        System.out.println("Payments (P)");
+        System.out.println("Reports (R)");
+        System.out.println("Back to home (H)");
+        System.out.print("Enter your choice: ");
+        String Input = scanner.nextLine().trim();
 
-        System.out.println("This is your ledger");
+        if (Input.equalsIgnoreCase("A")) {
+            System.out.println("All your entries");
+        } else if (Input.equalsIgnoreCase("D")) {
+            System.out.println("Your deposits");
+
+        } else if (Input.equalsIgnoreCase("P")) {
+            System.out.println("Your payments");
+
+        } else if (Input.equalsIgnoreCase("R")) {
+            System.out.println("Your reports");
+
+        } else if (Input.equalsIgnoreCase("H")) {
+            homeScreen();
+        } else {
+            System.out.println("Invalid input");
+        }
+
+
 
     }
 
