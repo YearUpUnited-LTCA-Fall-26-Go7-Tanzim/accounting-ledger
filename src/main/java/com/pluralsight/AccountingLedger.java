@@ -1,5 +1,8 @@
 package com.pluralsight;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.BufferedReader;
@@ -34,8 +37,10 @@ public class AccountingLedger {
             while ((line = reader.readLine()) != null) {
               //  System.out.println(line);
                 String[] parts = line.split("\\|");
+                LocalDate date = LocalDate.parse(parts[0]);
+                LocalTime time = LocalTime.parse(parts[1]);
                 double amount = Double.parseDouble(parts[4]);
-                Transaction transaction = new Transaction(parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
+                Transaction transaction = new Transaction(date, time, parts[2], parts[3], amount);
                 transactions.add(transaction);
 
             }
@@ -78,22 +83,31 @@ public class AccountingLedger {
     public static void makeADeposit() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n===Make a deposit===");
-        System.out.print("Date YYYY-MM-DD: ");
-        String date = scanner.nextLine().trim();
-        System.out.print("Time HH:MM:SS: ");
-        String time = scanner.nextLine().trim();
-        System.out.print("Description: ");
-        String description = scanner.nextLine();
-        System.out.print("Vendor: ");
-        String vendor = scanner.nextLine();
-        System.out.print("Amount: ");
-        double amount = Double.parseDouble(scanner.nextLine().trim());
+        try {
+            System.out.println("\n===Make a deposit===");
+            System.out.print("Date YYYY-MM-DD: ");
+            LocalDate date = LocalDate.parse(scanner.nextLine().trim());
+            System.out.print("Time HH:MM:SS: ");
+            LocalTime time = LocalTime.parse(scanner.nextLine().trim());
+            System.out.print("Description: ");
+            String description = scanner.nextLine();
+            System.out.print("Vendor: ");
+            String vendor = scanner.nextLine();
+            System.out.print("Amount: ");
+            double amount = Double.parseDouble(scanner.nextLine().trim());
 
 
-        Transaction deposit = new Transaction(date, time, description, vendor, amount);
-        transactions.add(deposit);
-        saveTransaction(deposit);
+            Transaction deposit = new Transaction(date, time, description, vendor, amount);
+            transactions.add(deposit);
+            saveTransaction(deposit);
+
+        } catch (DateTimeException e) {
+            System.out.println("Invalid date or time. Try again.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid amount. Enter a number.");
+        }
+
+
 
         //write new transaction to the csv
         // make a payment similar to the deposit
@@ -103,24 +117,32 @@ public class AccountingLedger {
     public static void makeAPayment() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n===Make a payment===");
+        try {
+            System.out.println("\n===Make a payment===");
 
-        System.out.print("\nDate YYYY-MM-DD: ");
-        String date = scanner.nextLine().trim();
-        System.out.print("Time HH:MM:SS: ");
-        String time = scanner.nextLine().trim();
-        System.out.print("Description: ");
-        String description = scanner.nextLine();
-        System.out.print("Vendor: ");
-        String vendor = scanner.nextLine();
-        System.out.print("Amount: ");
-        double amount = Double.parseDouble(scanner.nextLine().trim());
-        amount = -Math.abs(amount);
+            System.out.print("\nDate YYYY-MM-DD: ");
+            LocalDate date = LocalDate.parse(scanner.nextLine().trim());
+            System.out.print("Time HH:MM:SS: ");
+            LocalTime time = LocalTime.parse(scanner.nextLine().trim());
+            System.out.print("Description: ");
+            String description = scanner.nextLine();
+            System.out.print("Vendor: ");
+            String vendor = scanner.nextLine();
+            System.out.print("Amount: ");
+            double amount = Double.parseDouble(scanner.nextLine().trim());
+            amount = -Math.abs(amount);
 
 
-        Transaction payment = new Transaction(date, time, description, vendor, amount);
-        transactions.add(payment);
-        saveTransaction(payment);
+            Transaction payment = new Transaction(date, time, description, vendor, amount);
+            transactions.add(payment);
+            saveTransaction(payment);
+
+        } catch (DateTimeException e) {
+            System.out.println("Invalid date or time. Try again.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid amount. Enter a number.");
+        }
+
 
         for (Transaction t : transactions ) {
             System.out.println(t.getAmount());
