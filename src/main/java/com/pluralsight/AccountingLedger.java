@@ -83,29 +83,20 @@ public class AccountingLedger {
     public static void makeADeposit() {
         Scanner scanner = new Scanner(System.in);
 
-        try {
             System.out.println("\n===Make a deposit===");
-            System.out.print("Date YYYY-MM-DD: ");
-            LocalDate date = LocalDate.parse(scanner.nextLine().trim());
-            System.out.print("Time HH:MM:SS: ");
-            LocalTime time = LocalTime.parse(scanner.nextLine().trim());
+            LocalDate date = Console.promptForDate();
+            LocalTime time = Console.promptForTime();
             System.out.print("Description: ");
             String description = scanner.nextLine();
             System.out.print("Vendor: ");
             String vendor = scanner.nextLine();
-            System.out.print("Amount: ");
-            double amount = Double.parseDouble(scanner.nextLine().trim());
+            double amount = Console.promptForAmount();
 
 
             Transaction deposit = new Transaction(date, time, description, vendor, amount);
             transactions.add(deposit);
             saveTransaction(deposit);
 
-        } catch (DateTimeException e) {
-            System.out.println("Invalid date or time. Try again.");
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid amount. Enter a number.");
-        }
 
 
 
@@ -117,19 +108,15 @@ public class AccountingLedger {
     public static void makeAPayment() {
         Scanner scanner = new Scanner(System.in);
 
-        try {
             System.out.println("\n===Make a payment===");
 
-            System.out.print("\nDate YYYY-MM-DD: ");
-            LocalDate date = LocalDate.parse(scanner.nextLine().trim());
-            System.out.print("Time HH:MM:SS: ");
-            LocalTime time = LocalTime.parse(scanner.nextLine().trim());
+            LocalDate date = Console.promptForDate();
+            LocalTime time = Console.promptForTime();
             System.out.print("Description: ");
             String description = scanner.nextLine();
             System.out.print("Vendor: ");
             String vendor = scanner.nextLine();
-            System.out.print("Amount: ");
-            double amount = Double.parseDouble(scanner.nextLine().trim());
+           double amount = Console.promptForAmount();
             amount = -Math.abs(amount);
 
 
@@ -137,11 +124,6 @@ public class AccountingLedger {
             transactions.add(payment);
             saveTransaction(payment);
 
-        } catch (DateTimeException e) {
-            System.out.println("Invalid date or time. Try again.");
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid amount. Enter a number.");
-        }
 
 
         for (Transaction t : transactions ) {
