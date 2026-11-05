@@ -54,28 +54,35 @@ public class AccountingLedger {
 
     public static void homeScreen() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\n===== Account Home =====");
-        System.out.println("\nAdd Deposit (D)");
-        System.out.println("Make payment (P)");
-        System.out.println("Ledger (L)");
-        System.out.println("Exit(X)");
-        System.out.print("Enter your choice: ");
-        String input = scanner.nextLine().trim();
 
-        if (input.equalsIgnoreCase("D")) {
-            makeADeposit();
-        } else if (input.equalsIgnoreCase("P")) {
-            makeAPayment();
+        while (true) {
+            System.out.println("\n===== Account Home =====");
+            System.out.println("\nAdd Deposit (D)");
+            System.out.println("Make payment (P)");
+            System.out.println("Ledger (L)");
+            System.out.println("Exit(X)");
+            System.out.print("Enter your choice: ");
+            String input = scanner.nextLine().trim();
 
-        } else if (input.equalsIgnoreCase("L")) {
-            yourLedger();
+            if (input.equalsIgnoreCase("D")) {
+                makeADeposit();
+            } else if (input.equalsIgnoreCase("P")) {
+                makeAPayment();
 
-        } else if (input.equalsIgnoreCase("X")) {
-           exit();
+            } else if (input.equalsIgnoreCase("L")) {
+                yourLedger();
 
-        } else {
-            System.out.println("Invalid input");
+            } else if (input.equalsIgnoreCase("X")) {
+                exit();
+                return;
+
+            } else {
+                System.out.println("Invalid input");
+            }
+
         }
+
+
 
 
     }
@@ -189,4 +196,9 @@ public class AccountingLedger {
     // create a class to be the "thing" represented by 1 line of file.
     // write the logic to read from the file and create the things, and put them someplace.
     // creating transaction object for every new transaction and storing it in a array list.
+
+    // all transaction , deposit option, all payments
+    // report screen
+    // loops inside home screen, ledger screen, and report screen. Only thing that ends code is exiting home if they exit ledger they go back to home. reports to ledger.
+
 }
