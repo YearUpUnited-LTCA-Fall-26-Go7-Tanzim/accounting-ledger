@@ -204,8 +204,19 @@ public class AccountingLedger {
     }
 
     public static void reportsScreen() {
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("\n==== Your reports ====");
+            System.out.println("\nMonth To Date (1)");
+            System.out.println("Previous Month (2)");
+            System.out.println("Year To Date (3)");
+            System.out.println("Previous Year (4)");
+            System.out.println("Search by Vendor (5)");
+            System.out.println("Go back (0)");
+            System.out.println("Enter your choice: ");
+            String Input = scanner.nextLine().trim();
+
+
         }
     }
 
