@@ -213,8 +213,61 @@ public class AccountingLedger {
             System.out.println("Previous Year (4)");
             System.out.println("Search by Vendor (5)");
             System.out.println("Go back (0)");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
             String Input = scanner.nextLine().trim();
+
+            if (Input.equals("1")) {
+                LocalDate today = LocalDate.now();
+                LocalDate startOfMonth = today.withDayOfMonth(1);
+                for (Transaction t : transactions) {
+                    if (!t.getDate().isBefore(startOfMonth) && !t.getDate().isAfter(today)) {
+                        System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+                    }
+                }
+
+            } else if (Input.equals("2")) {
+                LocalDate today = LocalDate.now();
+                LocalDate firstDay = today.minusMonths(1).withDayOfMonth(1);
+                LocalDate lastDay = today.withDayOfMonth(1).minusDays(1);
+                for (Transaction t : transactions) {
+                    if (!t.getDate().isBefore(firstDay) && !t.getDate().isAfter(lastDay)) {
+                        System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+                    }
+
+
+                }
+
+            } else if (Input.equals("3")) {
+                LocalDate today = LocalDate.now();
+                LocalDate startOfYear = today.withDayOfYear(1);
+                for (Transaction t : transactions) {
+                    if (!t.getDate().isBefore(startOfYear) && !t.getDate().isAfter(today)) {
+                        System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+                    }
+                }
+
+
+
+            } else if (Input.equals("4")) {
+                LocalDate today = LocalDate.now();
+                LocalDate startOfYear = today.minusYears(1).withDayOfYear(1);
+                LocalDate endOfYear = today.withDayOfYear(1).minusDays(1);
+                for (Transaction t : transactions) {
+                    if (!t.getDate().isBefore(startOfYear) && !t.getDate().isAfter(endOfYear)) {
+                        System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+                    }
+                }
+
+            } else if (Input.equals("5")) {
+                System.out.println("\nEnter vendor name: ");
+                String vendorSearch = scanner.nextLine().trim();
+                for (Transaction t : transactions) {
+                    if (t.getVendor().equalsIgnoreCase(vendorSearch)) {
+                        
+                    }
+                }
+
+            }
 
 
         }
