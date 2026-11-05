@@ -141,34 +141,62 @@ public class AccountingLedger {
 
     public static void yourLedger() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\n===This is your ledger===");
-        System.out.println("\nAll entries (A)");
-        System.out.println("Deposits (D)");
-        System.out.println("Payments (P)");
-        System.out.println("Reports (R)");
-        System.out.println("Back to home (H)");
-        System.out.print("Enter your choice: ");
-        String Input = scanner.nextLine().trim();
 
-        if (Input.equalsIgnoreCase("A")) {
-            System.out.println("All your entries");
-        } else if (Input.equalsIgnoreCase("D")) {
-            System.out.println("Your deposits");
+        while (true) {
+            System.out.println("\n===This is your ledger===");
+            System.out.println("\nAll entries (A)");
+            System.out.println("Deposits (D)");
+            System.out.println("Payments (P)");
+            System.out.println("Reports (R)");
+            System.out.println("Back to home (H)");
+            System.out.print("Enter your choice: ");
+            String Input = scanner.nextLine().trim();
 
-        } else if (Input.equalsIgnoreCase("P")) {
-            System.out.println("Your payments");
+            if (Input.equalsIgnoreCase("A")) {
+                showAllEntries();
+            } else if (Input.equalsIgnoreCase("D")) {
+                showDeposits();
 
-        } else if (Input.equalsIgnoreCase("R")) {
-            System.out.println("Your reports");
+            } else if (Input.equalsIgnoreCase("P")) {
+                showPayments();
 
-        } else if (Input.equalsIgnoreCase("H")) {
-            homeScreen();
-        } else {
-            System.out.println("Invalid input");
+            } else if (Input.equalsIgnoreCase("R")) {
+                reportsScreen();
+
+            } else if (Input.equalsIgnoreCase("H")) {
+                return;
+            } else {
+                System.out.println("Invalid input");
+            }
+
         }
 
 
 
+
+    }
+
+    public static void showAllEntries() {
+        System.out.println("\n==== All your entries ====");
+        for (Transaction t : transactions) {
+            System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+
+        }
+    }
+
+    public static void showDeposits() {
+        System.out.println("\n==== All your deposits ====");
+        
+    }
+
+    public static void showPayments() {
+        System.out.println("==== All your payments ====");
+    }
+
+    public static void reportsScreen() {
+        while (true) {
+            System.out.println("==== Your reports ====");
+        }
     }
 
     public static void exit() {
