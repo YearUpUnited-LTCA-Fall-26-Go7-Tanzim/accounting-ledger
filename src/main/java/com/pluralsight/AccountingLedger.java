@@ -186,16 +186,26 @@ public class AccountingLedger {
 
     public static void showDeposits() {
         System.out.println("\n==== All your deposits ====");
-        
+        for (Transaction t : transactions) {
+            if (t.getAmount() > 0) {
+                System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+            }
+        }
+
     }
 
     public static void showPayments() {
-        System.out.println("==== All your payments ====");
+        System.out.println("\n==== All your payments ====");
+        for (Transaction t : transactions) {
+            if (t.getAmount() < 0) {
+                System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+            }
+        }
     }
 
     public static void reportsScreen() {
         while (true) {
-            System.out.println("==== Your reports ====");
+            System.out.println("\n==== Your reports ====");
         }
     }
 
