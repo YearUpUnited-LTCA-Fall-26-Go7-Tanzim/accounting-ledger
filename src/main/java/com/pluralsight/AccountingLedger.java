@@ -1,10 +1,8 @@
 package com.pluralsight;
 
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -53,7 +51,6 @@ public class AccountingLedger {
     }
 
     public static void homeScreen() {
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("\n===== Account Home =====");
@@ -61,8 +58,7 @@ public class AccountingLedger {
             System.out.println("Make payment (P)");
             System.out.println("Ledger (L)");
             System.out.println("Exit(X)");
-            System.out.print("Enter your choice: ");
-            String input = scanner.nextLine().trim();
+            String input = Console.promptForString("Enter your choice: ");
 
             if (input.equalsIgnoreCase("D")) {
                 makeADeposit();
@@ -88,15 +84,12 @@ public class AccountingLedger {
     }
 
     public static void makeADeposit() {
-        Scanner scanner = new Scanner(System.in);
 
             System.out.println("\n===Make a deposit===");
             LocalDate date = Console.promptForDate();
             LocalTime time = Console.promptForTime();
-            System.out.print("Description: ");
-            String description = scanner.nextLine();
-            System.out.print("Vendor: ");
-            String vendor = scanner.nextLine();
+            String description = Console.promptForString("Description: ");
+            String vendor = Console.promptForString("Vendor: ");
             double amount = Console.promptForAmount();
 
 
@@ -107,22 +100,16 @@ public class AccountingLedger {
 
 
 
-        //write new transaction to the csv
-        // make a payment similar to the deposit
-        // ledger screen
     }
 
     public static void makeAPayment() {
-        Scanner scanner = new Scanner(System.in);
 
             System.out.println("\n===Make a payment===");
 
             LocalDate date = Console.promptForDate();
             LocalTime time = Console.promptForTime();
-            System.out.print("Description: ");
-            String description = scanner.nextLine();
-            System.out.print("Vendor: ");
-            String vendor = scanner.nextLine();
+            String description = Console.promptForString("Description: ");
+            String vendor = Console.promptForString("Vendor: ");
            double amount = Console.promptForAmount();
             amount = -Math.abs(amount);
 
@@ -132,15 +119,9 @@ public class AccountingLedger {
             saveTransaction(payment);
 
 
-
-        for (Transaction t : transactions ) {
-            System.out.println(t.getAmount());
-        }
-
     }
 
     public static void yourLedger() {
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("\n===This is your ledger===");
@@ -149,21 +130,20 @@ public class AccountingLedger {
             System.out.println("Payments (P)");
             System.out.println("Reports (R)");
             System.out.println("Back to home (H)");
-            System.out.print("Enter your choice: ");
-            String Input = scanner.nextLine().trim();
+            String input = Console.promptForString("Enter your choice: ");
 
-            if (Input.equalsIgnoreCase("A")) {
+            if (input.equalsIgnoreCase("A")) {
                 showAllEntries();
-            } else if (Input.equalsIgnoreCase("D")) {
+            } else if (input.equalsIgnoreCase("D")) {
                 showDeposits();
 
-            } else if (Input.equalsIgnoreCase("P")) {
+            } else if (input.equalsIgnoreCase("P")) {
                 showPayments();
 
-            } else if (Input.equalsIgnoreCase("R")) {
+            } else if (input.equalsIgnoreCase("R")) {
                 reportsScreen();
 
-            } else if (Input.equalsIgnoreCase("H")) {
+            } else if (input.equalsIgnoreCase("H")) {
                 return;
             } else {
                 System.out.println("Invalid input");
@@ -204,7 +184,7 @@ public class AccountingLedger {
     }
 
     public static void reportsScreen() {
-        Scanner scanner = new Scanner(System.in);
+
         while (true) {
             System.out.println("\n==== Your reports ====");
             System.out.println("\nMonth To Date (1)");
@@ -213,63 +193,83 @@ public class AccountingLedger {
             System.out.println("Previous Year (4)");
             System.out.println("Search by Vendor (5)");
             System.out.println("Go back (0)");
-            System.out.print("Enter your choice: ");
-            String Input = scanner.nextLine().trim();
+            String input = Console.promptForString("Enter your choice: ").trim();
 
-            if (Input.equals("1")) {
-                LocalDate today = LocalDate.now();
-                LocalDate startOfMonth = today.withDayOfMonth(1);
-                for (Transaction t : transactions) {
-                    if (!t.getDate().isBefore(startOfMonth) && !t.getDate().isAfter(today)) {
-                        System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
-                    }
-                }
+            if (input.equals("1")) {
+                showMonthToDate();
 
-            } else if (Input.equals("2")) {
-                LocalDate today = LocalDate.now();
-                LocalDate firstDay = today.minusMonths(1).withDayOfMonth(1);
-                LocalDate lastDay = today.withDayOfMonth(1).minusDays(1);
-                for (Transaction t : transactions) {
-                    if (!t.getDate().isBefore(firstDay) && !t.getDate().isAfter(lastDay)) {
-                        System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
-                    }
+            } else if (input.equals("2")) {
+               showPreviousMonth();
 
+            } else if (input.equals("3")) {
+               showYearToDate();
 
-                }
+            } else if (input.equals("4")) {
+                showPreviousYear();
 
-            } else if (Input.equals("3")) {
-                LocalDate today = LocalDate.now();
-                LocalDate startOfYear = today.withDayOfYear(1);
-                for (Transaction t : transactions) {
-                    if (!t.getDate().isBefore(startOfYear) && !t.getDate().isAfter(today)) {
-                        System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
-                    }
-                }
+            } else if (input.equals("5")) {
+                searchByVendor();
 
-
-
-            } else if (Input.equals("4")) {
-                LocalDate today = LocalDate.now();
-                LocalDate startOfYear = today.minusYears(1).withDayOfYear(1);
-                LocalDate endOfYear = today.withDayOfYear(1).minusDays(1);
-                for (Transaction t : transactions) {
-                    if (!t.getDate().isBefore(startOfYear) && !t.getDate().isAfter(endOfYear)) {
-                        System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
-                    }
-                }
-
-            } else if (Input.equals("5")) {
-                System.out.println("\nEnter vendor name: ");
-                String vendorSearch = scanner.nextLine().trim();
-                for (Transaction t : transactions) {
-                    if (t.getVendor().equalsIgnoreCase(vendorSearch)) {
-                        
-                    }
-                }
-
+            } else if (input.equals("0")) {
+                return;
+            } else {
+                System.out.println("\nInvalid input. Try again.");
             }
 
 
+        }
+    }
+
+    public static void showMonthToDate() {
+        LocalDate today = LocalDate.now();
+        LocalDate startOfMonth = today.withDayOfMonth(1);
+        for (Transaction t : transactions) {
+            if (!t.getDate().isBefore(startOfMonth) && !t.getDate().isAfter(today)) {
+                System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+            }
+        }
+    }
+
+    public static void showPreviousMonth() {
+        LocalDate today = LocalDate.now();
+        LocalDate firstDay = today.minusMonths(1).withDayOfMonth(1);
+        LocalDate lastDay = today.withDayOfMonth(1).minusDays(1);
+        for (Transaction t : transactions) {
+            if (!t.getDate().isBefore(firstDay) && !t.getDate().isAfter(lastDay)) {
+                System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+            }
+
+
+        }
+    }
+
+    public static void showYearToDate() {
+        LocalDate today = LocalDate.now();
+        LocalDate startOfYear = today.withDayOfYear(1);
+        for (Transaction t : transactions) {
+            if (!t.getDate().isBefore(startOfYear) && !t.getDate().isAfter(today)) {
+                System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+            }
+        }
+    }
+
+    public static void showPreviousYear() {
+        LocalDate today = LocalDate.now();
+        LocalDate startOfYear = today.minusYears(1).withDayOfYear(1);
+        LocalDate endOfYear = today.withDayOfYear(1).minusDays(1);
+        for (Transaction t : transactions) {
+            if (!t.getDate().isBefore(startOfYear) && !t.getDate().isAfter(endOfYear)) {
+                System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+            }
+        }
+    }
+
+    public static void searchByVendor() {
+        String vendorSearch = Console.promptForString("Enter vendor name: ");
+        for (Transaction t : transactions) {
+            if (t.getVendor().equalsIgnoreCase(vendorSearch)) {
+                System.out.println("\n" + t.getDate() + "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+            }
         }
     }
 
@@ -293,14 +293,5 @@ public class AccountingLedger {
         }
     }
 
-
-    // populate your csv file with some data
-    // create a class to be the "thing" represented by 1 line of file.
-    // write the logic to read from the file and create the things, and put them someplace.
-    // creating transaction object for every new transaction and storing it in a array list.
-
-    // all transaction , deposit option, all payments
-    // report screen
-    // loops inside home screen, ledger screen, and report screen. Only thing that ends code is exiting home if they exit ledger they go back to home. reports to ledger.
 
 }

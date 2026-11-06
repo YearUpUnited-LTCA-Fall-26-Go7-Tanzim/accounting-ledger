@@ -43,4 +43,9 @@ public class Console {
         }
     }
 
+    public static String promptForString(String message) {
+        System.out.print(message);
+        return scanner.nextLine().trim();
+    }
+
 }
