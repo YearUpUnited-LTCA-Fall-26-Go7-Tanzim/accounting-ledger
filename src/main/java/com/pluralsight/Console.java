@@ -38,7 +38,7 @@ public class Console {
                 System.out.print("Amount: ");
                 return Double.parseDouble(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
-                System.out.println("invalid amount. Please try again.");
+                System.out.println("Invalid amount. Please try again.");
             }
         }
     }
@@ -46,6 +46,17 @@ public class Console {
     public static String promptForString(String message) {
         System.out.print(message);
         return scanner.nextLine().trim();
+    }
+
+    public static void displayTransaction(Transaction t) {
+        System.out.printf(
+              "%-12s %-12s %-20s %-18s %10.2f%n",
+              t.getDate(),
+              t.getTime().format(java.time.format.DateTimeFormatter.ofPattern("h:mm a")),
+              t.getDescription(),
+              t.getVendor(),
+              t.getAmount()
+        );
     }
 
 }

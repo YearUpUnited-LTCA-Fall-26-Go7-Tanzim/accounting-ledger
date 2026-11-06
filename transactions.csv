@@ -1,7 +1,7 @@
 2025-03-14|09:42:10|Monthly paycheck|Employer Inc|2800.00
 2025-03-15|13:05:33|Groceries|Whole Foods|-96.40
 2025-06-02|18:20:45|Concert tickets|Ticketmaster|-142.00
-2025-08-20|10:15:00|Freelance project payment|Joe|750.00
+2025-08-20|10:15:00|Freelance payment|Joe|750.00
 2025-09-09|12:31:18|Laptop charger|Amazon|-39.99
 2025-11-28|20:11:05|Winter jacket|Target|-84.25
 2025-12-31|16:00:00|Year-end bonus|Employer Inc|1200.00
@@ -19,11 +19,11 @@
 2026-10-04|12:18:36|Groceries|Whole Foods|-103.27
 2026-10-09|18:55:14|Phone case|Amazon|-19.99
 2026-10-15|10:20:00|Invoice 1002 paid|Joe|900.00
-2026-10-22|20:05:41|Streaming subscription|Netflix|-15.49
+2026-10-22|20:05:41|Subscription|Netflix|-15.49
 2026-10-30|11:50:30|Gas|Shell|-48.12
 2026-11-01|09:10:05|Rent|Oakwood Apartments|-1350.00
 2026-11-02|13:27:48|Coffee beans|Starbucks|-14.75
-2026-11-03|07:58:20|Refund for returned item|Amazon|39.99
+2026-11-03|07:58:20|Returned item|Amazon|39.99
 2026-11-03|01:40:27|Dinner|Mashed Burger|-50.0
 2026-11-03|01:42:30|money receiver|Zelle Alex|100.0
 2026-11-04|02:45:27|Computer|Amazon|2100.0
